@@ -1,33 +1,44 @@
 open Printf
 
-let rec flatten1 listOfLists = match listOfLists with
+(*Zadanie 1:*)
+  let rec flatten1 listOfLists = match listOfLists with
   | [] -> [] (*Pionowe kreski są trochę jak case, separują*)
   | head::tail -> List.append head (flatten1 tail)
 
+
+(*Zadanie 2:*)
   let rec count list searched = match list with
   | [] -> 0
   | head::tail -> (if(head==searched) then 1 else 0) + (count tail searched)
   (*// Jeżeli pierwszy element jest szukanym to zwiększam licznik o 1 i przechodzę dalej.*)
 
+
+(*Zadanie 3:*)
   let rec replicate element (times:int) =
     if(times>0) then element::(replicate element (times-1)) else []
     (*Zwracana lista : dodaj element do listy dopóki times > 0*)
 
+
+(*Zadanie 4:*)
   let rec sqrList (list:int list) = match list with 
   | [] -> []
   | head::tail -> (head*head)::(sqrList tail)
   (*Dodaj kwadrat pierwszego elementu do reszty*)
 
-    let rec listLength list : int = match list with
-    | [] -> 0
-    | head::tail -> 1 + (listLength tail)
 
-    let rec listReverse list = match list with
-    | [] -> []
-    | head :: tail -> (listReverse tail) @ [head]
+(*Zadanie 5:*)
+  let rec listReverse list = match list with
+  | [] -> []
+  | head :: tail -> (listReverse tail) @ [head]
 
   let palindrome list = list = (listReverse list)
-    (*jeżeli lista jest identyczna z jej odwrotnością - jest palindromem*)
+  (*jeżeli lista jest identyczna z jej odwrotnością - jest palindromem*)
+
+  
+(*Zadanie 6:*)
+  let rec listLength list : int = match list with
+  | [] -> 0
+  | head::tail -> 1 + (listLength tail)
 
 
   (*Zadanie 1:*)
@@ -57,7 +68,7 @@ let rec flatten1 listOfLists = match listOfLists with
   
   let _ = print_endline (string_of_bool (palindrome [1;2;3;4;5]))
   let _ = printf "\n"
-  
+
    (*Zadanie 6:*)
 
     let result6 = listLength [1; 2; 3; 4; 5]
