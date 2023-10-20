@@ -1,7 +1,7 @@
 open Printf
 
 let rec flatten1 listOfLists = match listOfLists with
-  | [] -> [] (*Pionowe kreski sa troche jak case, separuja*)
+  | [] -> [] (*Pionowe kreski są trochę jak case, separują*)
   | head::tail -> List.append head (flatten1 tail)
 
   let rec count list searched = match list with
