@@ -22,6 +22,13 @@ let rec flatten1 listOfLists = match listOfLists with
     | [] -> 0
     | head::tail -> 1 + (listLength tail)
 
+    let rec listReverse list = match list with
+    | [] -> []
+    | head :: tail -> (listReverse tail) @ [head]
+
+  let palindrome list = list = (listReverse list)
+    (*jeżeli lista jest identyczna z jej odwrotnością - jest palindromem*)
+
 
   (*Zadanie 1:*)
   let result1Ints = flatten1 [[1; 2; 3]; [4; 5]; [6; 7; 8]; [9]]
@@ -46,6 +53,11 @@ let rec flatten1 listOfLists = match listOfLists with
   let _ = List.iter (printf "%d ") result4
   let _ = printf "\n\n"
 
+  (*Zadanie 5:*)
+  
+  let _ = print_endline (string_of_bool (palindrome [1;2;3;4;5]))
+  let _ = printf "\n"
+  
    (*Zadanie 6:*)
 
     let result6 = listLength [1; 2; 3; 4; 5]
