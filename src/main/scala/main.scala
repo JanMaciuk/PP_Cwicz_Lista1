@@ -24,6 +24,11 @@ def sqrList(list: List[Int]): List[Int] =  list match {
   case head :: tail => head * head :: sqrList(tail)
   // Dodaj kwadrat pierwszego elementu do reszty
 }
+def sqrListNoMatch(list: List[Int]): List[Int] = {
+  if (list.isEmpty) Nil
+  else list.head * list.head :: sqrList(list.tail)
+  // Dodaj kwadrat pierwszego elementu do reszty
+}
 
 @tailrec
 def palindrome[A](list: List[A]): Boolean = list match {
@@ -33,9 +38,20 @@ def palindrome[A](list: List[A]): Boolean = list match {
   // Jeżeli pierwszy element jest równy ostatniemu to wykonaj ponownie bez pierwszego i ostatniego elementu
 } // Na wykładzie była przedstawiona metoda reverse, ale zakładam że nie o to chodziło w ćwiczeniu (byłoby banalne)
 
+@tailrec
+def palindromeNoMatch[A](list: List[A]): Boolean = {
+  if (list.isEmpty || list.size == 1) true
+  else if (list.head == list.last) palindromeNoMatch(list.tail.dropRight(1))
+  else false
+}
 def listLength[A](list: List[A]): Int = list match{
   case Nil => 0
   case head :: tail => 1+ listLength(tail)
+}
+
+def listLengthNoMatch[A](list: List[A]): Int = {
+  if (list.isEmpty) 0
+  else 1 + listLength(list.tail)
 }
 @main
 def main(): Unit = {
